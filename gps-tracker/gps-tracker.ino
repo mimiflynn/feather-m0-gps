@@ -6,8 +6,6 @@ Adafruit_GPS GPS(&Serial1);
 
 void setup() {
   Serial.begin(115200);
-  Serial.println("GPS Test");
-  
   GPS.begin(9600);
 
   GPS.sendCommand(PMTK_SET_NMEA_OUTPUT_RMCGGA);
@@ -15,14 +13,14 @@ void setup() {
   GPS.sendCommand(PGCMD_ANTENNA);
 
   delay(1000);
-  Serial1.println(PMTK_Q_RELEASE);
+  // Serial1.println(PMTK_Q_RELEASE);
 }
 
 uint32_t timer = millis();
 
 void loop() {
   char c = GPS.read();
-  if (c) Serial.print(c);
+  // if (c) Serial.print(c);
   
   if (GPS.newNMEAreceived()) {
     if (!GPS.parse(GPS.lastNMEA()))
@@ -47,10 +45,6 @@ void loop() {
     Serial.print(" quality: "); Serial.println((int)GPS.fixquality); 
     if (GPS.fix) {
       Serial.print("Location: ");
-      Serial.print(GPS.latitude, 4); Serial.print(GPS.lat);
-      Serial.print(", "); 
-      Serial.print(GPS.longitude, 4); Serial.println(GPS.lon);
-      Serial.print("Location (in degrees, works with Google Maps): ");
       Serial.print(GPS.latitudeDegrees, 4);
       Serial.print(", "); 
       Serial.println(GPS.longitudeDegrees, 4);
