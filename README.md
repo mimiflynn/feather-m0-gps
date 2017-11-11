@@ -1,4 +1,4 @@
-# feather-m0-gps-tracker
-Simple output for GPS tracking
+# feather-m0-gps-position
+Simple output for GPS position data
 
 Requires https://github.com/adafruit/Adafruit_GPS
